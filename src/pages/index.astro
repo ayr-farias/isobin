@@ -113,6 +113,13 @@ import Layout from '../layouts/Layout.astro';
               <div class="render-top"><div><span class="card-index">D / RENDER</span><h3>Bring it to life.</h3><p>Audio is created on your device. Nothing is uploaded.</p></div><div class="render-mark">✳</div></div>
               <div class="render-progress hidden" id="render-progress"><div class="progress-copy"><span id="render-status">Preparing audio…</span><strong id="render-percent">0%</strong></div><div class="progress-track"><span id="progress-fill"></span></div></div>
               <div class="render-actions"><button class="button button-primary generate-button" id="generate-button" type="button"><span class="generate-label">Generate audio</span><span class="generate-arrow">↗</span></button><button class="button button-secondary" id="copy-command" type="button">Copy Python command <span>⌘</span></button><a class="button button-download hidden" id="download-link" href="#" download>Download file ↓</a></div>
+              <div class="preview-panel hidden" id="preview-panel">
+                <div class="preview-heading">
+                  <span class="card-index">E / PREVIEW</span>
+                  <p>Listen to the generated session here before saving it to your device.</p>
+                </div>
+                <audio class="preview-audio" id="preview-audio" controls preload="metadata" aria-label="Preview generated audio"></audio>
+              </div>
               <div class="render-message" id="render-message" role="status" aria-live="polite">Ready when you are. The default output is a 20-minute WAV session.</div>
             </div>
           </div>
@@ -127,6 +134,36 @@ import Layout from '../layouts/Layout.astro';
 
     <footer class="footer"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span><span>isobin<span class="brand-dot">.</span></span></a><span>Made for curious ears.</span><a href="https://github.com/ayr-farias/isobin" target="_blank" rel="noreferrer">Open source project ↗</a></footer>
   </div>
+  <style>
+    .preview-panel {
+      display: grid;
+      grid-template-columns: minmax(130px, .45fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 18px;
+      margin-top: 18px;
+      padding: 15px;
+      border: 1px solid rgba(216,255,114,.18);
+      border-radius: 12px;
+      background: rgba(11,17,22,.55);
+    }
+    .preview-heading .card-index { margin-bottom: 7px; }
+    .preview-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.6;
+    }
+    .preview-audio {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      height: 42px;
+      color-scheme: dark;
+    }
+    @media (max-width: 680px) {
+      .preview-panel { grid-template-columns: 1fr; gap: 10px; }
+    }
+  </style>
   <script>
     import '../scripts/app.js';
   </script>
