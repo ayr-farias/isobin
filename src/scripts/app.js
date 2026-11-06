@@ -228,6 +228,11 @@ function pythonCommand(s) {
 }
 
 function revokeDownload() {
+  const preview = $('preview-audio');
+  preview?.pause();
+  preview?.removeAttribute('src');
+  preview?.load();
+  $('preview-panel')?.classList.add('hidden');
   if (downloadUrl) URL.revokeObjectURL(downloadUrl);
   downloadUrl = null;
   $('download-link').classList.add('hidden');
@@ -240,6 +245,12 @@ function finishWithBlob(blob, settings) {
   link.href = downloadUrl;
   link.download = makeFilename(settings);
   link.classList.remove('hidden');
+
+  const preview = $('preview-audio');
+  preview.src = downloadUrl;
+  preview.load();
+  $('preview-panel').classList.remove('hidden');
+
   setProgress(100, 'Your file is ready.');
   setBusy(false, 'Generate another file');
   $('render-message').textContent = `${link.download} is ready (${formatBytes(blob.size)}). Download it to save a copy on your device.`;
