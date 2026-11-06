@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Isobin — Audio Generator" description="Build binaural and isochronic sessions and download the audio file, rendered locally in your browser.">
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Isobin home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+        <span>isobin<span class="brand-dot">.</span></span>
+      </a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="#generator">Generator</a>
+        <a href="#about">How it works</a>
+      </nav>
+      <a class="github-link" href="https://github.com/ayr-farias/isobin" target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.11.08 1.7 1.14 1.7 1.14.99 1.69 2.59 1.2 3.22.92.1-.72.39-1.2.7-1.48-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.21 1.14-2.99-.11-.28-.5-1.42.11-2.96 0 0 .93-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.54.22 2.68.11 2.96.71.78 1.14 1.77 1.14 2.99 0 4.29-2.61 5.23-5.1 5.51.4.35.75 1.02.75 2.06V22c0 .29.2.64.77.53A11.1 11.1 0 0 0 12 .9Z"/></svg>
+        <span>Repository</span><span class="external-arrow">↗</span>
+      </a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse-dot"></span> A browser-based audio generator</div>
+          <h1>Shape the space<br />between <em>frequencies.</em></h1>
+          <p class="hero-lede">Layer binaural and isochronic tones. Fine-tune every detail. Generate a session and download the audio file — right here in your browser.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#generator">Open the generator <span>↘</span></a>
+            <span class="text-link">No account. No upload. Just sound.</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orb orb-large"></div><div class="orb orb-small"></div>
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+          <div class="wave-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="art-label art-label-top">FREQUENCY / TIME</div><div class="art-label art-label-bottom">L 200 Hz <span>·</span> R 210 Hz</div>
+        </div>
+        <div class="hero-foot"><span>01 / CREATE</span><span>Precise sound design, made personal</span><span>SCROLL TO EXPLORE ↓</span></div>
+      </section>
+
+      <section class="generator-section section-wrap" id="generator">
+        <div class="section-heading generator-heading">
+          <div><div class="section-kicker">01 — GENERATE</div><h2>Build your session<span class="heading-period">.</span></h2></div>
+          <p>Compose your sound in layers. Your settings are saved in this browser and audio is rendered locally before download.</p>
+        </div>
+        <div class="generator-layout">
+          <aside class="generator-aside">
+            <div class="aside-intro"><span class="aside-index">SESSION BUILDER / 01</span><h3>Start with a preset.</h3><p>Choose a starting point, then make it yours.</p></div>
+            <label class="field-label" for="preset-select">PRESET LIBRARY</label>
+            <select id="preset-select" class="select-control">
+              <option value="">Choose a preset…</option>
+              <option value="alpha">10 Hz (alpha range)</option>
+              <option value="theta">6 Hz (theta range)</option>
+              <option value="delta">2 Hz (delta range)</option>
+              <option value="beta">18 Hz (beta range)</option>
+              <option value="sync">10 Hz, binaural pulsed with the isochronic beat</option>
+              <option value="descending">Descending 90 min (from your command)</option>
+            </select>
+            <div class="aside-note"><span class="note-star">✳</span><p>Presets are starting points, not fixed recipes. Every parameter remains editable.</p></div><p class="preset-message" id="preset-message" aria-live="polite">Choose a preset to begin.</p>
+            <div class="aside-bottom"><div class="aside-number">01<span> / 04</span></div><span>FREQUENCY DESIGN</span></div>
+          </aside>
+
+          <div class="builder-main">
+            <div class="builder-card file-card">
+              <div class="builder-card-head"><div><span class="card-index">A / OUTPUT</span><h3>File settings</h3></div><span class="head-icon">↗</span></div>
+              <div class="form-grid form-grid-three">
+                <div class="field"><label class="field-label" for="output-name">FILE NAME</label><input class="text-input" id="output-name" type="text" value="isobin_session" /></div>
+                <div class="field"><label class="field-label" for="file-format">FORMAT</label><select class="select-control" id="file-format"><option value="wav">WAV · Native</option><option value="flac">FLAC · Lossless</option><option value="mp3">MP3 · Compressed</option><option value="opus">OPUS · Compressed</option></select></div>
+                <div class="field"><label class="field-label" for="sample-rate">SAMPLE RATE <span class="optional">OPTIONAL</span></label><select class="select-control" id="sample-rate"><option value="">Automatic</option><option>8000</option><option>11025</option><option>12000</option><option>16000</option><option>22050</option><option>24000</option><option>32000</option><option>44100</option><option>48000</option><option>88200</option><option>96000</option><option>192000</option></select></div>
+              </div>
+              <div class="form-grid form-grid-three compact-fields">
+                <div class="field"><label class="field-label" for="duration">LENGTH</label><input class="text-input" id="duration" type="text" value="20m" /><span class="field-hint">e.g. 90s, 20m, 1.5h, 1:30:00</span></div>
+                <div class="field"><label class="field-label" for="fade-in">FILE FADE-IN</label><input class="text-input" id="fade-in" type="text" value="5s" /></div>
+                <div class="field"><label class="field-label" for="fade-out">FILE FADE-OUT</label><input class="text-input" id="fade-out" type="text" value="5s" /></div>
+              </div>
+              <div class="field slider-field"><div class="slider-label"><label class="field-label" for="master-volume">MASTER VOLUME</label><output id="master-volume-value" for="master-volume">0.80</output></div><input id="master-volume" class="range-control" type="range" min="0" max="1" step="0.01" value="0.8" /></div>
+              <div class="estimate-strip" id="estimate-box"><span class="estimate-mark">↗</span><div><strong id="estimate-size">211 MB</strong><span id="estimate-caption">Estimated download size</span></div><span class="estimate-note">STEREO OUTPUT</span></div>
+              <div class="format-settings" id="format-settings-wav"><div class="field"><label class="field-label" for="bit-depth">BIT DEPTH</label><select id="bit-depth" class="select-control narrow-select"><option value="16">16-bit PCM</option><option value="24">24-bit PCM</option></select><span class="field-hint">WAV is generated directly in your browser.</span></div></div>
+              <div class="format-settings hidden" id="format-settings-flac"><div class="field"><label class="field-label" for="flac-level">FLAC COMPRESSION (0–12)</label><input id="flac-level" class="text-input narrow-input" type="number" min="0" max="12" value="5" /><span class="field-hint">Lossless at every compression level.</span></div><div class="field"><label class="field-label" for="flac-bit-depth">BIT DEPTH</label><select id="flac-bit-depth" class="select-control narrow-select"><option value="16">16-bit</option><option value="24">24-bit</option></select></div></div>
+              <div class="format-settings hidden" id="format-settings-mp3"><div class="field"><label class="field-label" for="mp3-mode">ENCODING MODE</label><select id="mp3-mode" class="select-control narrow-select"><option value="CBR">Constant bitrate</option><option value="VBR">Variable quality</option></select></div><div class="field" id="mp3-bitrate-wrap"><label class="field-label" for="mp3-bitrate">BITRATE</label><select id="mp3-bitrate" class="select-control narrow-select"><option>128</option><option selected>192</option><option>224</option><option>256</option><option>320</option><option>160</option></select></div><div class="field hidden" id="mp3-quality-wrap"><label class="field-label" for="mp3-quality">VBR QUALITY (0 = BEST)</label><input id="mp3-quality" class="text-input narrow-input" type="number" min="0" max="9" value="2" /></div></div>
+              <div class="format-settings hidden" id="format-settings-opus"><div class="field"><label class="field-label" for="opus-bitrate">TARGET BITRATE (KBPS)</label><select id="opus-bitrate" class="select-control narrow-select"><option>64</option><option>96</option><option selected>128</option><option>160</option><option>192</option></select></div><div class="field"><label class="field-label" for="opus-vbr">RATE CONTROL</label><select id="opus-vbr" class="select-control narrow-select"><option value="on">Variable (VBR)</option><option value="off">Constant (CBR)</option><option value="constrained">Constrained VBR</option></select></div><p class="field-hint full-span">Opus output is rendered at 48 kHz by default.</p></div>
+            </div>
+
+            <div class="builder-card tone-card" id="binaural-card">
+              <div class="builder-card-head"><div><div class="toggle-title"><label class="switch"><input id="binaural-enabled" type="checkbox" checked /><span class="switch-track"></span></label><span class="card-index">B / LAYER ONE</span></div><h3>Binaural beats</h3><p class="card-description">Two nearby frequencies, one delivered to each ear. Stereo headphones required.</p></div><span class="layer-tag">STEREO / L-R</span></div>
+              <div class="layer-controls">
+                <div class="field"><div class="slider-label"><label class="field-label" for="binaural-volume">BINAURAL VOLUME</label><output id="binaural-volume-value" for="binaural-volume">0.50</output></div><input id="binaural-volume" class="range-control" type="range" min="0" max="1" step="0.01" value="0.5" /></div>
+                <div class="field"><label class="field-label" for="binaural-glide">GLIDE BETWEEN SECTIONS</label><div class="input-suffix"><input id="binaural-glide" class="text-input" type="text" value="0" /><span>seconds</span></div><span class="field-hint">0 = instant change. Phase remains continuous.</span></div>
+              </div>
+              <div class="subsection-head"><div><h4>Frequency sections</h4><p>Played in order, then repeated to fill the file.</p></div><button class="small-add" id="add-section" type="button">＋ Add section</button></div>
+              <div class="row-list" id="sections-list"></div>
+              <div class="beat-readout" id="beat-readout"><span class="readout-pulse"></span>Beat difference: <strong>10 Hz</strong></div>
+              <div class="field mode-field"><label class="field-label" for="binaural-mode">TIMING MODE</label><select id="binaural-mode" class="select-control"><option value="constant">Continuous</option><option value="sync">Pulsed with an isochronic tone</option></select></div>
+              <div class="field sync-tone-field hidden" id="sync-tone-field"><label class="field-label" for="sync-tone">FOLLOW ISOCHRONIC TONE #</label><input id="sync-tone" class="text-input narrow-input" type="number" min="1" max="20" value="1" /></div>
+            </div>
+
+            <div class="builder-card tone-card" id="iso-card">
+              <div class="builder-card-head"><div><div class="toggle-title"><label class="switch"><input id="iso-enabled" type="checkbox" checked /><span class="switch-track"></span></label><span class="card-index">C / LAYER TWO</span></div><h3>Isochronic tones</h3><p class="card-description">Pulsed tones with a defined beat rate. Add multiple frequencies and shape their timing.</p></div><span class="layer-tag">PULSE / HZ</span></div>
+              <div class="layer-controls">
+                <div class="field"><div class="slider-label"><label class="field-label" for="iso-volume">ISOCHRONIC VOLUME</label><output id="iso-volume-value" for="iso-volume">0.50</output></div><input id="iso-volume" class="range-control" type="range" min="0" max="1" step="0.01" value="0.5" /></div>
+                <div class="field"><label class="field-label" for="iso-duty">DUTY CYCLE</label><div class="slider-label"><span class="field-hint">Share of each beat the tone is on</span><output id="iso-duty-value" for="iso-duty">0.50</output></div><input id="iso-duty" class="range-control" type="range" min="0.1" max="1" step="0.01" value="0.5" /></div>
+              </div>
+              <div class="subsection-head"><div><h4>Tone frequencies</h4><p>All tones play at the same time.</p></div><button class="small-add" id="add-tone" type="button">＋ Add tone</button></div>
+              <div class="row-list" id="tones-list"></div>
+              <div class="layer-controls pulse-controls">
+                <div class="field"><label class="field-label" for="iso-fade-in">PULSE FADE-IN</label><div class="input-suffix"><input id="iso-fade-in" class="text-input" type="number" min="0" value="10" /><span>ms</span></div></div>
+                <div class="field"><label class="field-label" for="iso-fade-out">PULSE FADE-OUT</label><div class="input-suffix"><input id="iso-fade-out" class="text-input" type="number" min="0" value="10" /><span>ms</span></div></div>
+                <div class="field"><label class="field-label" for="iso-mode">EAR CONFIGURATION</label><select id="iso-mode" class="select-control"><option value="mono">Same pulses in both ears</option><option value="stereo">Alternate pulses left / right</option></select></div>
+              </div>
+            </div>
+
+            <div class="render-card">
+              <div class="render-top"><div><span class="card-index">D / RENDER</span><h3>Bring it to life.</h3><p>Audio is created on your device. Nothing is uploaded.</p></div><div class="render-mark">✳</div></div>
+              <div class="render-progress hidden" id="render-progress"><div class="progress-copy"><span id="render-status">Preparing audio…</span><strong id="render-percent">0%</strong></div><div class="progress-track"><span id="progress-fill"></span></div></div>
+              <div class="render-actions"><button class="button button-primary generate-button" id="generate-button" type="button"><span class="generate-label">Generate audio</span><span class="generate-arrow">↗</span></button><button class="button button-secondary" id="copy-command" type="button">Copy Python command <span>⌘</span></button><a class="button button-download hidden" id="download-link" href="#" download>Download file ↓</a></div>
+              <div class="render-message" id="render-message" role="status" aria-live="polite">Ready when you are. The default output is a 20-minute WAV session.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section section-wrap" id="about">
+        <div class="about-left"><div class="section-kicker">02 — THE IDEA</div><h2>Two layers.<br /><em>One soundscape.</em></h2></div>
+        <div class="about-right"><p>Isobin brings together two kinds of rhythmic audio synthesis: binaural beats, created by presenting slightly different tones to each ear, and isochronic tones, created by pulsing a tone at a chosen rate.</p><p>Shape them independently or combine them into a single stereo file. Adjust the carrier frequencies, timing, fades, and levels, then generate your file directly in this browser.</p><div class="privacy-line"><span class="privacy-icon">◉</span><span>PRIVATE BY DESIGN — AUDIO IS GENERATED LOCALLY IN YOUR BROWSER.</span></div></div>
+      </section>
+    </main>
+
+    <footer class="footer"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span><span>isobin<span class="brand-dot">.</span></span></a><span>Made for curious ears.</span><a href="https://github.com/ayr-farias/isobin" target="_blank" rel="noreferrer">Open source project ↗</a></footer>
+  </div>
+  <script>
+    import '../scripts/app.js';
+  </script>
+</Layout>
