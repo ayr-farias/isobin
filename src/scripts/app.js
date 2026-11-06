@@ -253,7 +253,7 @@ function finishWithBlob(blob, settings) {
 
   setProgress(100, 'Your file is ready.');
   setBusy(false, 'Generate another file');
-  $('render-message').textContent = `${link.download} is ready (${formatBytes(blob.size)}). Download it to save a copy on your device.`;
+  $('render-message').textContent = `${link.download} is ready (${formatBytes(blob.size)}). Preview it here or download a copy to your device.`;
   $('render-message').dataset.tone = 'success';
   $('generate-button').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
